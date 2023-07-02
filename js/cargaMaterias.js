@@ -83,8 +83,33 @@ function cargarNotas(){
         //Reseteo el nombre
         const campoAborrar = document.getElementById("NomMateriaCarga");
         campoAborrar.value = "";
+
+        Toastify({
+            text: "Materia Cargada!",
+            duration: 3000,
+            destination: "index.html",
+            newWindow: true,
+            close: true,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+            style: {
+                background: "green",
+              }
+        }).showToast();
+
     }else{
-        alert("Notas ingresadas NO VALIDAS o materia NO INGRESADA");
+        Toastify({
+            text: "Notas ingresadas NO VALIDAS o materia NO INGRESADA",
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            stopOnFocus: true,
+            style: {
+                background: "crimson",
+              }
+        }).showToast();
     }
     //reinicio la carga
     renderCargarNotas();

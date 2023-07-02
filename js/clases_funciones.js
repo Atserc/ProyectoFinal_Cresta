@@ -78,16 +78,36 @@ function cargarCampos(){
 }
 
 function vaciarMaterias(){
-    localStorage.removeItem("materias");
-    renderizarMaterias();
+    Swal.fire({
+        title: 'Eliminar todo',
+        text: '¿ Desea eliminar todas las materias cargadas ?',
+        icon: 'success',
+        showConfirmButton: 'true',
+        showCancelButton: 'false'
+    }).then((result) => {
+        if(result.isConfirmed){
+            localStorage.removeItem("materias");
+            renderizarMaterias();
+        }
+    }); 
 }
 
 function eliminarMateria(nombreBorrar){
-    console.log(nombreBorrar);
-    const materias = cargarMateriasLS();
-    const materiasNuevo = materias.filter(item => item.nombre !== nombreBorrar);
-    guardarMateriasLS(materiasNuevo);
-    renderizarMaterias();
+    Swal.fire({
+        title: 'Eliminar materia',
+        text: '¿ Desea eliminar la materias cargada ?',
+        icon: 'warning',
+        showConfirmButton: 'true',
+        showCancelButton: 'false'
+    }).then((result) => {
+        if(result.isConfirmed){
+            const materias = cargarMateriasLS();
+            const materiasNuevo = materias.filter(item => item.nombre !== nombreBorrar);
+            guardarMateriasLS(materiasNuevo);
+            renderizarMaterias();
+        }
+    });
+    
 }
 
 function elegirImagen(nombreMateria){
