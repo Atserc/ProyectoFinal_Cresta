@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 //Clases
 
 class Materia {
@@ -200,7 +198,7 @@ async function recibirAPI(titulo){
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': process.env.X_RAPIDAPI_KEY,
+            'X-RapidAPI-Key': 'b9fe731355msh5523b7e5498f0adp1dabd9jsn77a153835da5',
             'X-RapidAPI-Host': 'book-finder1.p.rapidapi.com'
         }
     };
