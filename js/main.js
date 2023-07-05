@@ -48,10 +48,33 @@ function renderizarMaterias(){
         <div class="alert alert-danger" role="alert">
             Sin notas para mostrar!
         </div>
-  `
+        `
     }
 
-    document.getElementById("contenido").innerHTML = contenido;
+    document.getElementById("contenidoA").innerHTML = contenido;
 }
 
 renderizarMaterias();
+
+
+function renderizarAPI(){
+    //const resultadoAPI = recibirAPI();
+    let contenido;
+
+    contenido = `
+        <div class="row m-5 text-center border border-inf">
+            <form id="formulario">
+                <div class="mb-3">
+                    <h2>¿ Necesitas ayuda para estudiar ?</h2>
+                    <h4>¡Busca libros para mejorar tus notas!</h4>
+                    <input type="text" class="form-control m-2" placeholder="Titulo del libro" aria-label="titulo">
+                    <button type="submit" class="btn btn-primary m-2" onclick="buscarLibros()">Buscar Libros</button>
+                </div>
+            </form>
+        </div>
+    `;
+
+    document.getElementById("contenidoB").innerHTML = contenido;
+}
+
+renderizarAPI();

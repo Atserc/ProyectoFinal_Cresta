@@ -110,9 +110,29 @@ function eliminarMateria(nombreBorrar){
     
 }
 
+function removerAcentos(texto) {
+    const caracteresAcentuados = {
+      'á': 'a',
+      'é': 'e',
+      'í': 'i',
+      'ó': 'o',
+      'ú': 'u',
+      'Á': 'A',
+      'É': 'E',
+      'Í': 'I',
+      'Ó': 'O',
+      'Ú': 'U'
+    };
+    return texto.replace(/[áéíóúÁÉÍÓÚ]/g, function(match) {
+        return caracteresAcentuados[match];
+    });
+}
+
 function elegirImagen(nombreMateria){
+    const textoOriginal = nombreMateria;
+    const textoSinAcentos = removerAcentos(textoOriginal);
     let urlImagen = `<img`;
-    switch (nombreMateria.toUpperCase()) {
+    switch (textoSinAcentos.toUpperCase()) {
         case "LENGUA":
         case "LITERATURA":
         case "LENGUA Y LITERATURA":
@@ -154,6 +174,16 @@ function elegirImagen(nombreMateria){
         case "HISTORIA":
             urlImagen+=` src="img/materias/historia.svg" alt="Historia"`
             break;
+
+        case "INGLES":
+        case "FRANCES":
+        case "PORTUGUES":
+            urlImagen+=` src="img/materias/idioma.svg" alt="Idioma"`
+            break;
+        
+        case "BIOLOGIA":
+            urlImagen+=` src="img/materias/biologia.svg" alt="Biologia"`
+            break;
         
         default:
             urlImagen+=` src="img/materias/basico.svg" alt="Otras Materias"`
@@ -161,4 +191,41 @@ function elegirImagen(nombreMateria){
     }
     urlImagen += ` width="24"></img>`
     return urlImagen;
+}
+
+async function recibirAPI(titulo){
+    const url = `https://book-finder1.p.rapidapi.com/api/search?title=${titulo}&book_type=fiction&categories=Mystery%20%26%20Suspense&results_per_page=10&page=1`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'b9fe731355msh5523b7e5498f0adp1dabd9jsn77a153835da5',
+            'X-RapidAPI-Host': 'book-finder1.p.rapidapi.com'
+        }
+    };
+    let result ="";
+    try {
+        const response = await fetch(url, options);
+        result = await response.json();
+    } catch (error) {
+        result = "";
+    }
+    console.log(result);
+    return result;
+}
+
+function buscarLibros(){
+    const formulario = document.getElementById("formulario");
+
+    // Escuchar el evento submit del formulario
+    formulario.addEventListener("submit", function(event) {
+    event.preventDefault(); // Evitar el envío del formulario
+
+    // Obtener los valores de los campos
+    const titulo = document.querySelector('input[aria-label="titulo"]').value;
+
+    // Procesar los datos recibidos del formulario
+
+    const resultadoAPI = recibirAPI(titulo);
+    console.log(resultadoAPI);
+  });
 }

@@ -69,7 +69,7 @@ function cargarNotas(){
         const prom = promedio(notasTemp);
         // reviso si aprobó
         let aprobo;
-        if (prom >= 4){
+        if (prom >= 7){
             aprobo = true;
         }else{
             aprobo = false;
