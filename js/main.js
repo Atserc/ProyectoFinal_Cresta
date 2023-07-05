@@ -58,7 +58,6 @@ renderizarMaterias();
 
 
 function renderizarAPI(){
-    //const resultadoAPI = recibirAPI();
     let contenido;
 
     contenido = `
