@@ -29,12 +29,7 @@ function renderCargarNotas(){
 }
 
 renderCargarNotas();
-//Se creó la página de carga inicial.
-
 cargarCampos();
-
-
-// Se espera a que el usuario elija cuantas notas quiere cargar.
 
 function elegirCantidad(){
 
@@ -55,32 +50,26 @@ function elegirCantidad(){
 
 function cargarNotas(){
     let notasTemp = [];
-    //Guardo el nombre
     const nomMateria = document.getElementById("NomMateriaCarga");
     const nombreMateria = nomMateria.value;
-    //Busco su imagen
     const imagenIcono = elegirImagen(nombreMateria);
-    //Guardo las notas
     notasTemp = guardarNotasTemp(numElegido);
-    //Valido que sean numeros validos
     let validez = notasValidas(notasTemp);
+
     if ((validez) && (nombreMateria !== "")){
-        //calculo el promedio
         const prom = promedio(notasTemp);
-        // reviso si aprobó
         let aprobo;
+
         if (prom >= 7){
             aprobo = true;
         }else{
             aprobo = false;
         }
-        //creo el objeto materia
+
         const materiaNueva = new Materia(nombreMateria,notasTemp,prom,aprobo,imagenIcono);
-        //lo agrego al array
         arregloMaterias.push(materiaNueva);
-        //actualizo la LS
         guardarMateriasLS(arregloMaterias);
-        //Reseteo el nombre
+
         const campoAborrar = document.getElementById("NomMateriaCarga");
         campoAborrar.value = "";
 
@@ -111,7 +100,7 @@ function cargarNotas(){
               }
         }).showToast();
     }
-    //reinicio la carga
+
     renderCargarNotas();
     cargarCampos();
 }

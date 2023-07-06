@@ -20,8 +20,6 @@ class Materia {
     }
 }
 
-
-
 //Funciones
 
 function notasValidas(notasTemp) {
@@ -81,7 +79,7 @@ function vaciarMaterias(){
     Swal.fire({
         title: 'Eliminar todo',
         text: '¿ Desea eliminar todas las materias cargadas ?',
-        icon: 'success',
+        icon: 'warning',
         showConfirmButton: 'true',
         showCancelButton: 'false'
     }).then((result) => {
@@ -96,7 +94,7 @@ function eliminarMateria(nombreBorrar){
     Swal.fire({
         title: 'Eliminar materia',
         text: '¿ Desea eliminar la materias cargada ?',
-        icon: 'warning',
+        icon: 'question',
         showConfirmButton: 'true',
         showCancelButton: 'false'
     }).then((result) => {

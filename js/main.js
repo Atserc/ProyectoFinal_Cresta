@@ -50,12 +50,10 @@ function renderizarMaterias(){
         </div>
         `
     }
-
     document.getElementById("contenidoA").innerHTML = contenido;
 }
 
 renderizarMaterias();
-
 
 function renderizarAPI(){
     let contenido;
