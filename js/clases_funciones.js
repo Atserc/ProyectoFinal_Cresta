@@ -196,7 +196,7 @@ async function recibirAPI(titulo){
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'b9fe731355msh5523b7e5498f0adp1dabd9jsn77a153835da5',
+            'X-RapidAPI-Key': ' ', // Poner en el espacio la X-RapidAPI-Key proporcionada en https://rapidapi.com/dfskGT/api/book-finder1/
             'X-RapidAPI-Host': 'book-finder1.p.rapidapi.com'
         }
     };
